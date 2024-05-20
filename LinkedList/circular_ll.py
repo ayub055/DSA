@@ -95,8 +95,30 @@ class CircularList:
                 temp = temp.next
             temp.value = value
         return self
+    
+    def remove(self, index):
+        if self.head is None or index < 0 or index > self.length:
+            return None
         
-            
+        curr_node = self.head
+        if index == 0:
+            self.head = curr_node.next
+            self.tail.next = self.head
+            curr_node.next = None
+        elif index == self.length - 1:
+            for _ in range(index-1):
+                curr_node = curr_node.next
+            curr_node.next = self.tail.next
+            self.temp = self.tail
+            self.tail = curr_node
+        else: 
+            for _ in range(index-1):
+                curr_node = curr_node.next
+            curr_node.next = self.tail.next
+            self.tail = None
+            self.tail = curr_node
+                        
+                           
             
             
 listt = CircularList()
@@ -106,14 +128,19 @@ listt.append(4)
 listt.prepend(4)
 print(listt)
 # print(listt.length)
-listt.insert(0, 8)
-print(listt)
+
 # print(listt.length)
 listt.insert(0, -12)
-print(listt)
+# print(listt)
 # listt.traverse()
 print(listt.get(0))
 print(listt.set(0, 0))
+listt.remove(4)
+print(listt)
+listt.remove(0)
+print(listt)
+
+
 
 
 

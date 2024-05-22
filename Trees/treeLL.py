@@ -38,6 +38,9 @@ def inOrder(root):
     print(root.data)
     inOrder(root.right)
 
-inOrder(root)
+# inOrder(root)
+
+
+    
 
 

@@ -62,11 +62,23 @@ class TwoPointers:
                 res.append(x)
                 
         return res
-        
+    
+    def maxArea(self, height):
+        area = 0
+        for i in range(len(height)):
+            for j in range(len(height)):
+                if i == j:
+                    continue
+                else:
+                    l = abs(i - j)
+                    b = min(height[i], height[j])
+                    
+                    area = max(area, l*b)
+        return area
         
             
-nums = [-1,0,1,2,-1,-4]
+# nums = [-1,0,1,2,-1,-4]
 # nums = [4, 5, 6]     
-       
+height = [1,8,6,2,5,4,8,3,7]
 obj = TwoPointers()
-print(obj.threeSum(nums))
+print(obj.maxArea(height))

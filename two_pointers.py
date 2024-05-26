@@ -65,15 +65,31 @@ class TwoPointers:
     
     def maxArea(self, height):
         area = 0
-        for i in range(len(height)):
-            for j in range(len(height)):
-                if i == j:
-                    continue
-                else:
-                    l = abs(i - j)
-                    b = min(height[i], height[j])
+        # for i in range(len(height)):
+        #     for j in range(len(height)):
+        #         if i == j:
+        #             continue
+        #         else:
+        #             l = abs(i - j)
+        #             b = min(height[i], height[j])
                     
-                    area = max(area, l*b)
+        #             area = max(area, l*b)
+        
+        l = 0
+        r = len(height) - 1
+        
+        while l < r:
+            length = abs(r - l)
+            breadth = min(height[l], height[r])
+            
+            # print(l , r, length*breadth)
+            area = max(area, length*breadth)
+            
+            if height[l] > height[r]:
+                r -= 1
+            else:
+                l += 1
+            
         return area
         
             

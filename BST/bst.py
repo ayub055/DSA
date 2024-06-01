@@ -40,6 +40,32 @@ def inorder(root):
     print(root.data)
     inorder(root.right)
     
+def search(self, root, val, stack):
+        print("hey")
+        
+        if root.data == val:
+            stack.append(root)
+            return root, stack
+        elif root.data <= val:
+            if root.right.data == val:
+                stack.append(root.right)
+                return root.right, stack
+            else:
+                self.search(root.right, val, stack)
+        else:
+            if root.left.data == val:
+                stack.append(root.left)
+                return root.left, stack
+            else:
+                self.search(root.right, val, stack)
+
+def lowestCommonAncestor(self, root, p, q):
+    p_val = p.data
+    q_val = q.data
+
+    stack_p = []
+    stack_q = []
+
 
     
         
@@ -53,8 +79,12 @@ insert(new_Tree, 23)
 insert(new_Tree, 12)
 insert(new_Tree, 65)
 
-preorder(new_Tree)
-print("-" * 50)
-inorder(new_Tree)
+# preorder(new_Tree)
+# print("-" * 50)
+# inorder(new_Tree)
+stack = []
+temp, s = search(new_Tree, 12, stack)
+print(temp.data)
+print(s)
 
               

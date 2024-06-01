@@ -28,6 +28,32 @@ class Graph:
             return True
         return False
       
+    def bfs(self, vertex):
+        visited = set()
+        visited.add(vertex)
+        queue = [vertex]
+        
+        while queue:
+            current = queue.pop(0)
+            print(current)
+            for adjacent in self.adjacency_list[current]:
+                if adjacent not in visited:
+                    visited.add(adjacent)
+                    queue.append(adjacent)
+                    
+    def dfs(self, vertex):
+        visited = set()
+        stack = [vertex]
+        while stack:
+            current = stack.pop()
+            if current not in visited:
+                visited.add(current)
+                print(current)
+            
+            for adjacent in self.adjacency_list[current]:
+                if adjacent not in visited:
+                    stack.append(adjacent)
+
 
     def print(self):
         for vertex in self.adjacency_list:

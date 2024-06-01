@@ -40,8 +40,10 @@ def inorder(root):
     print(root.data)
     inorder(root.right)
     
-def search(self, root, val, stack):
-        print("hey")
+def search(root, val, stack):
+        # print("hey")
+        if root is None:
+            return 
         
         if root.data == val:
             stack.append(root)
@@ -49,22 +51,22 @@ def search(self, root, val, stack):
         elif root.data <= val:
             if root.right.data == val:
                 stack.append(root.right)
-                return root.right, stack
+                return stack
             else:
-                self.search(root.right, val, stack)
+                search(root.right, val, stack)
         else:
             if root.left.data == val:
                 stack.append(root.left)
-                return root.left, stack
+                return stack
             else:
-                self.search(root.right, val, stack)
+                search(root.right, val, stack)
 
-def lowestCommonAncestor(self, root, p, q):
-    p_val = p.data
-    q_val = q.data
-
-    stack_p = []
-    stack_q = []
+def lca(root, p, q):
+        if (p < root.data) and (q < root.data):
+            return lca(root.left, p, q)
+        if (p > root.data) and (q > root.data):
+            return lca(root.right, p, q)
+        return root
 
 
     
@@ -72,19 +74,15 @@ def lowestCommonAncestor(self, root, p, q):
         
         
 new_Tree=BSTNode(None)
-insert(new_Tree, 50)
-insert(new_Tree, 70)
-insert(new_Tree, 40)
-insert(new_Tree, 23)
-insert(new_Tree, 12)
-insert(new_Tree, 65)
+insert(new_Tree, 1)
+insert(new_Tree, 3)
+insert(new_Tree, 2)
+# insert(new_Tree, 23)
+# insert(new_Tree, 12)
+# insert(new_Tree, 65)
+print(new_Tree.data)
+print(new_Tree.left.data)
+print(new_Tree.right.data)
 
-# preorder(new_Tree)
-# print("-" * 50)
-# inorder(new_Tree)
-stack = []
-temp, s = search(new_Tree, 12, stack)
-print(temp.data)
-print(s)
 
-              
+print(lca(new_Tree, 2, 3).data)    
